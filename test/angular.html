@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+     <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+</head>
+
+<body>
+    <div ng-app='myapp' ng-controller="myctrl">
+        <!-- <roob-att></roob-att> 作为元素名调用用E-->
+        <!-- <div roob-att></div> 作为属性调用 用A-->
+        <!-- <div class="roob-att"></div> 作为类命调用 -->
+        <!-- directive: roob-att 作为注释调用-->
+        <!-- <h1>{{herx}}</h1> -->
+        <!-- <input name="myaddress" type="email" ng-model="text">
+        <span ng-show="myfrom.myaddress.$error.email">不是一个合法地址哦</span> -->
+        <ul>
+            <li ><a href="#/">首页</a></li>
+            <li ><a href="#/complate">这是详情页</a></li>
+            <li ><a href="#/shopping">这是商品列表页</a></li>
+        </ul>
+        <div ng-view ></div>
+    </div>
+
+    <script>
+        var myapp = angular.module("myapp",['ngRoute']);
+            myapp.config('$routePovider', function($routePovider){
+            $routePovider
+           .when('/',{template:'这是首页'})
+           .when('/complate',{template:'这是详情页'})
+           .when('/shopping',{template:'这是商品列表页'})
+           .otherwise({redirectTo:'/'});
+        })
+        // myapp.service('herx', function() {
+        //     this.myfun = function(x) {
+        //         return x.toString(16);
+        //     }
+        // });
+        // myapp.controller('myctrl', function($scope) {
+        //     $scope.hero = ['google', 'baidu', 'alibaba', 'sdsds']
+        // })
+
+        //自定义指令
+        // var myapp = angular.module("myapp", []);
+        // myapp.directive("roobAtt", function() {
+        //     return {
+        //         restrict: "EACM",
+        //         template: "<h1>我自定义指令 雷鸣</h1>"
+        //     }
+        // })
+    </script>
+</body>
+
+</html>
